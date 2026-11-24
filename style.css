@@ -16,7 +16,7 @@
   --shadow: 0 12px 30px rgb(4 16 43 / 12%);
 }
 
-/* Reset */
+/* ---------- Reset / globalni sloj (van BEM-a) ---------- */
 *,
 *::before,
 *::after {
@@ -29,15 +29,6 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
 }
 
 img,
@@ -57,6 +48,7 @@ ul {
   list-style: none;
 }
 
+/* ---------- Utility ---------- */
 .icon {
   flex: none;
   inline-size: 1em;
@@ -68,11 +60,25 @@ ul {
   stroke-linejoin: round;
 }
 
-main {
+/* ---------- Layout ---------- */
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page__main {
   flex: 1;
 }
 
-header {
+/* ---------- Header ---------- */
+.site-header {
   position: sticky;
   top: 0;
   z-index: 10;
@@ -120,25 +126,25 @@ header {
   text-align: center;
   transition: background 0.2s, border-color 0.2s;
 
-  & span {
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gold-300);
-  }
-
-  & strong {
-    font-size: clamp(0.95rem, 3vw, 1.15rem);
-    white-space: nowrap;
-  }
-
   &:hover {
     background: rgb(255 210 26 / 12%);
     border-color: var(--gold-500);
   }
 }
 
-/* Hero */
+.header-phone__label {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-300);
+}
+
+.header-phone__number {
+  font-size: clamp(0.95rem, 3vw, 1.15rem);
+  white-space: nowrap;
+}
+
+/* ---------- Hero ---------- */
 .hero {
   position: relative;
   isolation: isolate;
@@ -166,7 +172,7 @@ header {
   margin-inline: auto;
 }
 
-#eyebrow {
+.hero__eyebrow {
   position: relative;
   display: inline-block;
   padding: 0.35em 1.2em;
@@ -188,7 +194,7 @@ header {
   }
 }
 
-.hero h1 {
+.hero__title {
   margin: 1.2rem auto 0;
   max-width: 24ch;
   font-size: clamp(2rem, 8.5vw, 4.3rem);
@@ -197,14 +203,14 @@ header {
   text-transform: uppercase;
   text-wrap: balance;
   text-shadow: 0 3px 18px rgb(0 0 0 / 40%);
+}
 
-  & span {
-    display: block;
-    background: linear-gradient(180deg, var(--gold-300), var(--gold-500) 55%, var(--gold-600));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+.hero__title-accent {
+  display: block;
+  background: linear-gradient(180deg, var(--gold-300), var(--gold-500) 55%, var(--gold-600));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero__lead {
@@ -222,6 +228,23 @@ header {
   margin-block-start: 1.8rem;
 }
 
+.hero__area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-block-start: 1.8rem;
+  font-size: 0.95rem;
+  color: var(--gold-300);
+}
+
+.hero__area-icon {
+  inline-size: 1.15rem;
+  block-size: 1.15rem;
+  color: var(--gold-400);
+}
+
+/* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -251,23 +274,7 @@ header {
   }
 }
 
-.hero__area {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  margin-block-start: 1.8rem;
-  font-size: 0.95rem;
-  color: var(--gold-300);
-
-  & .icon {
-    inline-size: 1.15rem;
-    block-size: 1.15rem;
-    color: var(--gold-400);
-  }
-}
-
-/* Sections */
+/* ---------- Content section ---------- */
 .section {
   padding: clamp(3rem, 8vw, 5rem) var(--pad);
 }
@@ -289,7 +296,7 @@ header {
   color: var(--pink);
 }
 
-.section h2 {
+.section__title {
   margin-block-start: 0.3rem;
   font-size: clamp(1.8rem, 6vw, 3rem);
   line-height: 1.1;
@@ -307,27 +314,27 @@ header {
   }
 }
 
-/* Services */
+/* ---------- Services ---------- */
 .check-list {
   display: grid;
   gap: 0.9rem;
   max-width: 62rem;
   margin-inline: auto;
+}
 
-  & li {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    padding: 0.8rem 1.1rem;
-    background: #fff;
-    border: 1px solid rgb(11 42 99 / 10%);
-    border-inline-start: 5px solid var(--gold-500);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    font-weight: 600;
-  }
+.check-list__item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.8rem 1.1rem;
+  background: #fff;
+  border: 1px solid rgb(11 42 99 / 10%);
+  border-inline-start: 5px solid var(--gold-500);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-weight: 600;
 
-  & li::before {
+  &::before {
     content: "✓";
     flex: none;
     display: grid;
@@ -348,53 +355,49 @@ header {
   }
 }
 
-/* Why us */
+/* ---------- Why us ---------- */
 .feature-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
   max-width: 70rem;
   margin-inline: auto;
-
-  & li {
-    padding: 1.6rem 1.2rem;
-    text-align: center;
-    background: #fff;
-    border-block-start: 4px solid var(--pink);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-  }
-
-  & h3 {
-    color: var(--navy-800);
-    font-size: 1.05rem;
-    line-height: 1.3;
-  }
-
-  & p {
-    margin-block-start: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--muted);
-  }
 }
 
-.feature__icon {
-  display: grid;
-  place-items: center;
+.feature-grid__item {
+  flex: 0 1 15rem;
+  padding: 1.6rem 1.2rem;
+  text-align: center;
+  background: #fff;
+  border-block-start: 4px solid var(--pink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.feature-grid__icon {
   inline-size: 3rem;
   block-size: 3rem;
   margin: 0 auto 0.9rem;
+  padding: 0.8rem;
   border-radius: 50%;
   background: var(--navy-800);
   color: var(--gold-400);
-
-  & .icon {
-    inline-size: 1.4rem;
-    block-size: 1.4rem;
-  }
 }
 
-/* Phone CTA */
+.feature-grid__title {
+  color: var(--navy-800);
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.feature-grid__text {
+  margin-block-start: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------- Phone CTA ---------- */
 .cta {
   margin: clamp(1rem, 4vw, 2.5rem) var(--pad);
   padding: clamp(1.6rem, 5vw, 3rem);
@@ -403,12 +406,12 @@ header {
   color: var(--navy-900);
   background: linear-gradient(115deg, var(--gold-300), var(--gold-500) 45%, var(--gold-600));
   box-shadow: 0 10px 30px rgb(232 169 0 / 30%);
+}
 
-  & p {
-    font-size: clamp(1.2rem, 4vw, 1.8rem);
-    font-weight: 800;
-    text-wrap: balance;
-  }
+.cta__text {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: 800;
+  text-wrap: balance;
 }
 
 .cta__phone {
@@ -425,44 +428,47 @@ header {
   letter-spacing: 0.02em;
   transition: transform 0.2s;
 
-  & .icon {
-    inline-size: 0.8em;
-    block-size: 0.8em;
-  }
-
   &:hover {
     transform: scale(1.03);
   }
 }
 
-/* Flyer gallery */
+.cta__icon {
+  inline-size: 0.8em;
+  block-size: 0.8em;
+}
+
+/* ---------- Gallery ---------- */
 .gallery {
   display: grid;
-  gap: 1.2rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-  max-width: 62rem;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  max-width: 70rem;
   margin-inline: auto;
+}
 
-  & img {
-    inline-size: 100%;
-    border: 3px solid var(--gold-500);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+.gallery__image {
+  inline-size: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 3px solid var(--gold-500);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgb(4 16 43 / 25%);
   }
 }
 
-/* Footer */
+/* ---------- Footer ---------- */
 .site-footer {
   padding: clamp(1.6rem, 4vw, 2.5rem) var(--pad);
   text-align: center;
   color: #cfd8ea;
   background: var(--ink);
   border-block-start: 4px solid var(--gold-500);
-
-  & p + p {
-    margin-block-start: 0.4rem;
-    font-size: 0.9rem;
-  }
 }
 
 .site-footer__brand {
@@ -472,6 +478,12 @@ header {
   color: var(--gold-400);
 }
 
+.site-footer__text {
+  margin-block-start: 0.4rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
