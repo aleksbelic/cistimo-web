@@ -230,9 +230,15 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.8rem;
-  margin-top: 1.8rem;
-  margin-block-start: 1.8rem;
+  margin-top: 1.4rem;
+  margin-block-start: 1.4rem;
+  margin-right: -0.4rem;
+  margin-bottom: -0.4rem;
+  margin-left: -0.4rem;
+}
+
+.hero__action {
+  margin: 0.4rem;
 }
 
 .hero__area {
@@ -375,15 +381,14 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  max-width: 70rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-inline: auto;
+  width: calc(100% + 1rem);
+  max-width: calc(70rem + 1rem);
+  margin: -0.5rem auto;
 }
 
 .feature-grid__item {
   flex: 0 1 15rem;
+  margin: 0.5rem;
   padding: 1.6rem 1.2rem;
   text-align: center;
   background: #fff;
