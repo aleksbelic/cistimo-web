@@ -207,7 +207,6 @@ ul {
   line-height: 1.06;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  text-wrap: balance;
   text-shadow: 0 3px 18px rgb(0 0 0 / 40%);
 }
 
@@ -221,9 +220,13 @@ ul {
 
 .hero__lead {
   margin: 1.2rem auto 0;
-  max-width: 40ch;
+  max-width: 56ch;
   font-size: clamp(1rem, 3vw, 1.25rem);
   color: #dbe4f5;
+}
+
+.hero__lead-phrase {
+  white-space: nowrap;
 }
 
 .hero__actions {
@@ -332,6 +335,16 @@ ul {
   background: linear-gradient(90deg, var(--pink), var(--gold-500));
 }
 
+.section__lead {
+  max-width: 46rem;
+  margin: 1.2rem auto 0;
+  margin-block-start: 1.2rem;
+  margin-inline: auto;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  line-height: 1.65;
+  color: var(--muted);
+}
+
 .check-list {
   display: grid;
   gap: 0.9rem;
@@ -423,6 +436,20 @@ ul {
   color: var(--muted);
 }
 
+.van {
+  padding: 0 var(--pad) clamp(1rem, 3vw, 2rem);
+  text-align: center;
+}
+
+.van__image {
+  display: block;
+  width: 100%;
+  inline-size: 100%;
+  max-width: 65rem;
+  height: auto;
+  margin-inline: auto;
+}
+
 .cta {
   margin: clamp(1rem, 4vw, 2.5rem) var(--pad);
   padding: clamp(1.6rem, 5vw, 3rem);
@@ -436,7 +463,6 @@ ul {
 .cta__text {
   font-size: clamp(1.2rem, 4vw, 1.8rem);
   font-weight: 800;
-  text-wrap: balance;
 }
 
 .cta__phone {
@@ -479,6 +505,7 @@ ul {
 .gallery__image {
   width: 100%;
   inline-size: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border: 3px solid var(--gold-500);
