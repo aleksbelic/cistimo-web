@@ -12,7 +12,7 @@
 
 ## Gallery images
 
-- Full-size originals live in `img/gallery/`. Names follow a 5-character, mixed-case alphanumeric pattern with a lowercase `.jpg` extension (e.g. `q7Kp2.jpg`, `jUa41.jpg`).
-- The page never loads the originals directly. It loads small thumbnails from `img/gallery/thumbs/<name>.jpg` (480×600, quality 80, ~49–73 KB each), which cuts the gallery payload from ~3.3 MB to ~0.7 MB. Originals are kept only as sources for regenerating thumbnails.
+- Full-size originals live in `img/original/`. Names follow a 5-character, mixed-case alphanumeric pattern with a lowercase `.jpg` extension (e.g. `q7Kp2.jpg`, `jUa41.jpg`).
+- The page never loads the originals directly. It loads small thumbnails from `img/thumbs/<name>.jpg` (480×600, quality 80, ~49–73 KB each), which cuts the gallery payload from ~3.3 MB to ~0.7 MB. Originals are kept only as sources for regenerating thumbnails.
 - Thumbnail files are center-cropped to a uniform 480×600 frame. `.gallery__image` renders them at `aspect-ratio: 4/5` with `object-fit: cover`, so the cards keep the 4:5 shape regardless of the column width. `height: auto` is required here: the `height` attribute on the `<img>` tags is only an intrinsic-size hint and would otherwise override `aspect-ratio`, stretching the cards to 600 px tall. Every card is the same size with no letterbox bars. Sizes are kept small because there is no lightbox and the full-size images are never opened.
 - Thumbnails are saved without EXIF, XMP, ICC, IPTC or comments.
