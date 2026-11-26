@@ -289,6 +289,13 @@ ul {
     font-size: 0.95rem;
   }
 
+  .hero__area-icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    inline-size: 1.15rem;
+    block-size: 1.15rem;
+  }
+
   .hero__actions {
     width: 100%;
     margin-top: 2.4rem;
@@ -297,6 +304,16 @@ ul {
   .hero__action {
     flex: 1 1 100%;
     max-width: 20rem;
+  }
+}
+
+@media (min-width: 30.01rem) and (max-width: 48rem) {
+  .hero__eyebrow {
+    font-size: clamp(1rem, 3.6vw, 1.45rem);
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 6.5vw, 3.2rem);
   }
 }
 
