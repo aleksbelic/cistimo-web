@@ -1,0 +1,7 @@
+# Search engines read robots.txt only from the root of a domain.
+# This file is served under /cistimo-web/, so effective rules must also exist
+# at https://abelic.com/robots.txt (the root site).
+User-agent: *
+Allow: /
+
+Sitemap: https://abelic.com/cistimo-web/sitemap.xml
