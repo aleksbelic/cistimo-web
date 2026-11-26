@@ -4,6 +4,7 @@
 - Uses HTML, CSS & vanilla JavaScript; no framework included.
 - Hosted by GitHub and deployed via GitHub Actions.
 - Browser target: Chrome/Edge, Firefox and Safari from 2021 or newer. Use only HTML, CSS and JS features available in those versions — avoid newer CSS such as `text-wrap: balance`, `:has()`, CSS nesting, container queries and `subgrid`. `aspect-ratio` has an `@supports` fallback, and the JavaScript is plain ES5 with no build step.
+- CSS uses physical properties (`width`, `margin-left`, `border-top`), not logical ones (`inline-size`, `margin-inline`, `border-block-start`), and no `inset` shorthand. Flex containers use margins instead of `gap`; grid `gap` is fine. All of these are missing from Safari 14.0 (iOS 14.0-14.4) and only arrived in 14.1.
 
 ## Icons
 
@@ -13,7 +14,7 @@
 ## Gallery images
 
 - Full-size originals live in `img/original/`. Names follow a 5-character, mixed-case alphanumeric pattern with a lowercase `.jpg` extension (e.g. `q7Kp2.jpg`, `jUa41.jpg`).
-- The page never loads the originals directly. It loads small thumbnails from `img/thumbs/<name>.jpg` (480×600, quality 80, ~49–73 KB each), which cuts the gallery payload from ~3.3 MB to ~0.7 MB. Originals are kept only as sources for regenerating thumbnails.
+- The page never loads the originals directly. It loads small thumbnails from `img/thumbs/<name>.jpg` (480×600, quality 80, ~49–73 KB each), which cuts the gallery payload from ~3.3 MB to ~0.7 MB. Originals are kept only as sources for regenerating thumbnails and are not published (see [Deploy](#deploy)).
 - Thumbnail files are center-cropped to a uniform 480×600 frame. `.gallery__image` renders them at `aspect-ratio: 4/5` with `object-fit: cover`, so the cards keep the 4:5 shape regardless of the column width. `height: auto` is required here: the `height` attribute on the `<img>` tags is only an intrinsic-size hint and would otherwise override `aspect-ratio`, stretching the cards to 600 px tall. Every card is the same size with no letterbox bars. Sizes are kept small because there is no lightbox and the full-size images are never opened.
 - Thumbnails are saved without EXIF, XMP, ICC, IPTC or comments.
 
@@ -21,7 +22,13 @@
 
 - The wordmark font is **Alex Brush**, self-hosted in `fonts/Alex_Brush/`: `AlexBrush-Regular.woff2` (~52 KB, primary) and `AlexBrush-Regular.ttf` (~115 KB, fallback). The `@font-face` rule lives in `style.css` and uses `font-display: swap`, so there are no external Google Fonts requests. The font is licensed under the SIL Open Font License — see `fonts/Alex_Brush/OFL.txt`.
 - Favicons are `favicon.svg` (modern browsers) and `favicon.ico` at 48×48 (fallback for older browsers such as Safari 2021). Both use the Lucide `truck` icon in the site's navy/gold palette.
-- All inline icons are simplified Lucide paths (ISC licensed). `img/logo.jpg` and `img/logo.png` are unused design experiments and are not loaded by the page.
+- All inline icons are simplified Lucide paths (ISC licensed).
+
+## Deploy
+
+`.github/workflows/static.yml` publishes to GitHub Pages on every push to `main`. It does not upload the whole repository, only what the page loads: `index.html`, `style.css`, `favicon.ico`, `favicon.svg`, `robots.txt`, `sitemap.xml`, `fonts/`, `img/thumbs/`, `img/og-image.jpg` and `CNAME` (if present). `img/original/` (about 4 MB of full-size photos) stays out of the published site.
+
+The workflow then checks that every file referenced from `index.html` and `style.css` is part of the published set and fails the deploy if one is missing. When the page starts using a new file or folder (a script, new images, another font), add it to the **Collect site files** step in the workflow.
 
 ## TODO: Custom domain
 
