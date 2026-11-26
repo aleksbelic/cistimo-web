@@ -161,6 +161,7 @@ ul {
   inline-size: 1.15rem;
   block-size: 1.15rem;
   color: var(--gold-400);
+  transform: translateY(-1px);
 }
 
 .header-phone:hover {
@@ -170,6 +171,7 @@ ul {
 
 .header-phone__number {
   font-size: clamp(0.95rem, 3vw, 1.15rem);
+  line-height: 1;
   white-space: nowrap;
 }
 
@@ -180,7 +182,7 @@ ul {
   display: flex;
   align-items: center;
   margin-top: calc(-1 * var(--header-offset) - 1px);
-  min-height: 100vh;
+  min-height: calc(100vh + 1px);
   padding: clamp(2rem, 7vh, 4rem) var(--pad);
   text-align: center;
   color: #fff;
@@ -204,6 +206,9 @@ ul {
 }
 
 .hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 62rem;
   margin-left: auto;
@@ -219,6 +224,7 @@ ul {
   font-family: Georgia, "Times New Roman", serif;
   font-style: italic;
   font-size: clamp(1rem, 4vw, 1.6rem);
+  margin-bottom: 0;
   white-space: nowrap;
   color: #fff;
   text-shadow: 0 2px 6px rgb(0 0 0 / 45%);
@@ -235,7 +241,7 @@ ul {
 }
 
 .hero__title {
-  margin: clamp(0.9rem, 2vh, 1.4rem) auto 0;
+  margin: clamp(1.6rem, 3.4vh, 2.2rem) auto 0;
   max-width: min(24ch, 100%);
   font-size: clamp(1.9rem, 7vh, 3.8rem);
   line-height: 1.06;
@@ -256,8 +262,8 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: clamp(1.2rem, 3vh, 2rem);
-  margin-block-start: clamp(1.2rem, 3vh, 2rem);
+  margin-top: clamp(2.7rem, 6vh, 3.4rem);
+  margin-block-start: clamp(2.7rem, 6vh, 3.4rem);
   margin-right: -0.4rem;
   margin-bottom: -0.4rem;
   margin-left: -0.4rem;
@@ -268,8 +274,24 @@ ul {
 }
 
 @media (max-width: 30rem) {
+  .hero__eyebrow {
+    font-size: 0.95rem;
+    padding: 0.35em 1em;
+  }
+
+  .hero__title {
+    margin-top: 1.8rem;
+    font-size: clamp(1.7rem, 8vw, 2.7rem);
+  }
+
+  .hero__area {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+  }
+
   .hero__actions {
     width: 100%;
+    margin-top: 2.4rem;
   }
 
   .hero__action {
@@ -283,17 +305,18 @@ ul {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: clamp(1rem, 2.5vh, 1.6rem);
-  margin-block-start: clamp(1rem, 2.5vh, 1.6rem);
-  font-size: clamp(0.85rem, 2.4vw, 1rem);
+  margin-top: clamp(2.1rem, 4.5vh, 2.8rem);
+  margin-block-start: clamp(2.1rem, 4.5vh, 2.8rem);
+  margin-bottom: 0;
+  font-size: clamp(1rem, 2.9vw, 1.25rem);
   color: var(--gold-300);
 }
 
 .hero__area-icon {
-  width: 1.15rem;
-  height: 1.15rem;
-  inline-size: 1.15rem;
-  block-size: 1.15rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  inline-size: 1.35rem;
+  block-size: 1.35rem;
   color: var(--gold-400);
 }
 
@@ -304,7 +327,7 @@ ul {
   padding: 0.85em 1.6em;
   border-radius: 999px;
   font-weight: 800;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .btn:hover {
@@ -322,12 +345,20 @@ ul {
   color: #fff;
 }
 
+.btn--gold:hover {
+  box-shadow: 0 12px 28px rgb(255 210 26 / 45%), inset 0 1px 0 rgb(255 255 255 / 55%);
+}
+
 .btn--ghost:hover {
-  background: rgb(255 255 255 / 10%);
+  background-color: rgb(255 255 255 / 10%);
 }
 
 .section {
   padding: clamp(3rem, 8vw, 5rem) var(--pad);
+}
+
+.section[id] {
+  scroll-margin-top: var(--header-offset);
 }
 
 .section--why {
@@ -476,7 +507,6 @@ ul {
   display: flex;
   justify-content: center;
   padding: 0 var(--pad);
-  margin-top: -2rem;
   overflow: hidden;
 }
 
@@ -503,6 +533,9 @@ ul {
 }
 
 .cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: clamp(1rem, 4vw, 2.5rem) var(--pad);
   padding: clamp(1.6rem, 5vw, 3rem);
   border-radius: 1.25rem;
@@ -528,13 +561,15 @@ ul {
   background: var(--navy-900);
   color: var(--gold-400);
   font-size: clamp(1.3rem, 6vw, 2.4rem);
+  height: calc(clamp(1.36rem, 6.3vw, 2.52rem) * 2.6);
   font-weight: 900;
   letter-spacing: 0.02em;
-  transition: transform 0.2s;
+  transition: font-size 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cta__phone:hover {
-  transform: scale(1.03);
+  font-size: clamp(1.36rem, 6.3vw, 2.52rem);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
 }
 
 .cta__icon {

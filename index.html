@@ -37,7 +37,7 @@
     <section class="hero">
       <div class="hero__content">
         <p id="eyebrow" class="hero__eyebrow">Čisto okruženje za bolji život!</p>
-        <h1 class="hero__title">Čišćenje <span class="hero__title-accent">stanova, podruma i poslovnih prostora</span>
+        <h1 class="hero__title">Čišćenje <span class="hero__title-accent">stanova, podruma, tavana, garaža i poslovnih prostora</span>
         </h1>
         <p class="hero__area">
           <svg class="icon hero__area-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -249,6 +249,22 @@
       var height = header.getBoundingClientRect().height;
       document.documentElement.style.setProperty("--header-offset", height + "px");
     }
+    var links = document.querySelectorAll('a[href^="#"]');
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener("click", function (e) {
+        var id = this.getAttribute("href");
+        if (id === "#top" || id === "#") return;
+        var target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        var top = target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight;
+        window.scrollTo(0, top);
+        try {
+          history.replaceState(null, "", id);
+        } catch (err) {}
+      });
+    }
+
     window.addEventListener("scroll", updateHeader, false);
     window.addEventListener("resize", updateHeaderOffset, false);
     updateHeader();
