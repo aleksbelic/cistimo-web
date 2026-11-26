@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="page">
+<body id="top" class="page">
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Vule - početna">
       <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
@@ -25,25 +25,20 @@
     </a>
 
     <a class="header-phone" href="tel:+381616648269" aria-label="Pozovite Vuleta na 061 664 8269">
-      <span class="header-phone__label">Pozovite nas</span>
+      <svg class="icon header-phone__icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z" />
+        <path d="M21 16v2a4 4 0 0 1-4 4h-5" />
+      </svg>
       <strong class="header-phone__number">061 664 8269</strong>
     </a>
   </header>
 
-  <main id="top" class="page__main">
+  <main class="page__main">
     <section class="hero">
       <div class="hero__content">
         <p id="eyebrow" class="hero__eyebrow">Čisto okruženje za bolji život!</p>
         <h1 class="hero__title">Čišćenje <span class="hero__title-accent">stanova, podruma i poslovnih prostora</span>
         </h1>
-        <p class="hero__lead">Ništa nam nije teško - <span class="hero__lead-phrase">Vaš prostor će ponovo
-            zasijati!</span></p>
-
-        <div class="hero__actions">
-          <a class="btn btn--gold hero__action" href="tel:+381616648269">Pozovite nas odmah</a>
-          <a class="btn btn--ghost hero__action" href="#services">Naše usluge</a>
-        </div>
-
         <p class="hero__area">
           <svg class="icon hero__area-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
@@ -51,6 +46,11 @@
           </svg>
           Radimo na teritoriji Beograda i okoline
         </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--gold hero__action" href="tel:+381616648269">Pozovite nas odmah</a>
+          <a class="btn btn--ghost hero__action" href="#services">Naše usluge</a>
+        </div>
       </div>
     </section>
 
@@ -72,6 +72,49 @@
     </section>
 
     <section class="van">
+      <svg class="van__waves" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="van-grad-a" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#b8c8e6" stop-opacity="0.16" />
+            <stop offset="40%" stop-color="#b8c8e6" stop-opacity="0.42" />
+            <stop offset="70%" stop-color="#ffd21a" stop-opacity="0.34" />
+            <stop offset="100%" stop-color="#ffd21a" stop-opacity="0.12" />
+          </linearGradient>
+          <linearGradient id="van-grad-b" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ffd21a" stop-opacity="0.15" />
+            <stop offset="35%" stop-color="#ffd21a" stop-opacity="0.42" />
+            <stop offset="70%" stop-color="#b8c8e6" stop-opacity="0.36" />
+            <stop offset="100%" stop-color="#b8c8e6" stop-opacity="0.12" />
+          </linearGradient>
+          <linearGradient id="van-grad-c" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#b8c8e6" stop-opacity="0.16" />
+            <stop offset="40%" stop-color="#b8c8e6" stop-opacity="0.4" />
+            <stop offset="75%" stop-color="#ffd21a" stop-opacity="0.38" />
+            <stop offset="100%" stop-color="#ffd21a" stop-opacity="0.12" />
+          </linearGradient>
+          <linearGradient id="van-grad-d" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#e5007e" stop-opacity="0.05" />
+            <stop offset="35%" stop-color="#e5007e" stop-opacity="0.12" />
+            <stop offset="70%" stop-color="#b8c8e6" stop-opacity="0.36" />
+            <stop offset="100%" stop-color="#b8c8e6" stop-opacity="0.1" />
+          </linearGradient>
+          <linearGradient id="van-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0" />
+            <stop offset="18%" stop-color="#fff" stop-opacity="1" />
+            <stop offset="82%" stop-color="#fff" stop-opacity="1" />
+            <stop offset="100%" stop-color="#fff" stop-opacity="0" />
+          </linearGradient>
+          <mask id="van-mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="1440" height="320">
+            <rect x="0" y="0" width="1440" height="320" fill="url(#van-fade)" />
+          </mask>
+        </defs>
+        <g mask="url(#van-mask)">
+          <path class="van__band" fill="url(#van-grad-a)" d="M0,90 C240,0 480,0 720,90 C960,180 1200,180 1440,90 L1440,245 C1200,165 960,165 720,245 C480,325 240,325 0,245 Z" />
+          <path class="van__band" fill="url(#van-grad-b)" d="M0,130 C120,60 240,60 360,130 C480,200 600,200 720,130 C840,60 960,60 1080,130 C1200,200 1320,200 1440,130 L1440,275 C1320,215 1200,215 1080,275 C960,335 840,335 720,275 C600,215 480,215 360,275 C240,335 120,335 0,275 Z" />
+          <path class="van__band" fill="url(#van-grad-c)" d="M0,110 C80,55 160,55 240,110 C320,165 400,165 480,110 C560,55 640,55 720,110 C800,165 880,165 960,110 C1040,55 1120,55 1200,110 C1280,165 1360,165 1440,110 L1440,260 C1360,210 1280,210 1200,260 C1120,310 1040,310 960,260 C880,210 800,210 720,260 C640,310 560,310 480,260 C400,210 320,210 240,260 C160,310 80,310 0,260 Z" />
+          <path class="van__band" fill="url(#van-grad-d)" d="M0,160 C160,60 320,60 480,160 C640,260 800,260 960,160 C1120,60 1280,60 1440,160 L1440,300 C1280,215 1120,215 960,300 C800,385 640,385 480,300 C320,215 160,215 0,300 Z" />
+        </g>
+      </svg>
       <img class="van__image" src="img/thumbs/van.png" alt="Žuti kombi za odvoženje starih stvari"
         width="1064" height="628" loading="lazy">
     </section>
@@ -193,6 +236,23 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    var header = document.querySelector(".site-header");
+    function updateHeader() {
+      if (window.pageYOffset > 0) {
+        header.classList.add("is-scrolled");
+      } else {
+        header.classList.remove("is-scrolled");
+      }
+    }
+    function updateHeaderOffset() {
+      var height = header.getBoundingClientRect().height;
+      document.documentElement.style.setProperty("--header-offset", height + "px");
+    }
+    window.addEventListener("scroll", updateHeader, false);
+    window.addEventListener("resize", updateHeaderOffset, false);
+    updateHeader();
+    updateHeaderOffset();
   </script>
 </body>
 
