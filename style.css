@@ -8,6 +8,7 @@
   --gold-600: #e8a900;
   --pink: #e5007e;
   --pink-light: #ff4fa8;
+  --pink-text: #c4006b;
   --ink: #0a0a0a;
   --paper: #fffdf7;
   --muted: #5a6478;
@@ -73,7 +74,6 @@ ul {
 
 .page {
   min-height: 100vh;
-  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   background: var(--paper);
@@ -95,7 +95,8 @@ ul {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.3rem var(--pad);
+  height: 68px;
+  padding: 0 var(--pad);
   background: transparent;
   border-bottom: 3px solid transparent;
   border-block-end: 3px solid transparent;
@@ -133,17 +134,22 @@ ul {
 
 .brand__name {
   font-family: "Alex Brush", Georgia, serif;
-  font-size: clamp(2.1rem, 5vw, 2.6rem);
+  font-size: clamp(2.4rem, 5vw, 3rem);
   line-height: 1;
   white-space: nowrap;
   color: var(--gold-300);
   text-shadow: 0 2px 10px rgb(4 16 43 / 40%);
-  transform: translateY(8px);
+  transform: translateY(6px);
+  transition: font-size 0.3s ease;
 }
 
 .brand__name::first-letter {
-  font-size: 1.35em;
+  font-size: 1.28em;
   color: var(--gold-400);
+}
+
+.site-header.is-scrolled .brand__name {
+  font-size: clamp(2.1rem, 5vw, 2.6rem);
 }
 
 .header-phone {
@@ -256,10 +262,16 @@ ul {
 
 .hero__title-accent {
   display: block;
-  background: linear-gradient(180deg, var(--gold-300), var(--gold-500) 55%, var(--gold-600));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--gold-400);
+}
+
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .hero__title-accent {
+    background: linear-gradient(180deg, var(--gold-300), var(--gold-500) 55%, var(--gold-600));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 .hero__actions {
@@ -397,7 +409,7 @@ ul {
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--pink);
+  color: var(--pink-text);
 }
 
 .section__title {

@@ -17,6 +17,12 @@
 - Thumbnail files are center-cropped to a uniform 480×600 frame. `.gallery__image` renders them at `aspect-ratio: 4/5` with `object-fit: cover`, so the cards keep the 4:5 shape regardless of the column width. `height: auto` is required here: the `height` attribute on the `<img>` tags is only an intrinsic-size hint and would otherwise override `aspect-ratio`, stretching the cards to 600 px tall. Every card is the same size with no letterbox bars. Sizes are kept small because there is no lightbox and the full-size images are never opened.
 - Thumbnails are saved without EXIF, XMP, ICC, IPTC or comments.
 
+## Fonts, icons and favicons
+
+- The wordmark font is **Alex Brush**, self-hosted in `fonts/Alex_Brush/`: `AlexBrush-Regular.woff2` (~52 KB, primary) and `AlexBrush-Regular.ttf` (~115 KB, fallback). The `@font-face` rule lives in `style.css` and uses `font-display: swap`, so there are no external Google Fonts requests. The font is licensed under the SIL Open Font License — see `fonts/Alex_Brush/OFL.txt`.
+- Favicons are `favicon.svg` (modern browsers) and `favicon.ico` at 48×48 (fallback for older browsers such as Safari 2021). Both use the Lucide `truck` icon in the site's navy/gold palette.
+- All inline icons are simplified Lucide paths (ISC licensed). `img/logo.jpg` and `img/logo.png` are unused design experiments and are not loaded by the page.
+
 ## TODO: Custom domain
 
 The site is currently served from `https://abelic.com/cistimo-web/`. When the new domain is bought, switch it to `https://cistimo.rs/` (root of the domain).
@@ -34,12 +40,15 @@ The site is currently served from `https://abelic.com/cistimo-web/`. When the ne
 - After DNS propagates, enable **Enforce HTTPS** (GitHub issues a free certificate).
 - Keep *Build and deployment → Source* set to **GitHub Actions**; the workflow needs no changes.
 
-### Code changes (4 places)
+### Code changes (6 places)
 
 - `index.html`: canonical link → `https://cistimo.rs/`.
+- `index.html`: `og:url` and the `og:image` URL → `https://cistimo.rs/...`.
 - `sitemap.xml`: `<loc>` → `https://cistimo.rs/`.
 - `robots.txt`: `Sitemap:` → `https://cistimo.rs/sitemap.xml`.
 - `robots.txt`: remove the comment about the site being served under `/cistimo-web/` — on the new domain the site lives at the root, so `robots.txt` and `sitemap.xml` work normally.
+
+`og:title`, `og:description`, `og:image:width`, `og:image:height`, `og:image:alt` and `twitter:card` need no change.
 
 Asset paths are relative (`img/thumbs/...`, `style.css`), so they work both on a subpath and at the domain root.
 
