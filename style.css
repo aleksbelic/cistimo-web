@@ -23,6 +23,15 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Alex Brush";
+  src: url("fonts/Alex_Brush/AlexBrush-Regular.woff2") format("woff2"),
+    url("fonts/Alex_Brush/AlexBrush-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -86,7 +95,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.5rem var(--pad);
+  padding: 0.3rem var(--pad);
   background: transparent;
   border-bottom: 3px solid transparent;
   border-block-end: 3px solid transparent;
@@ -122,27 +131,18 @@ ul {
   gap: 0.6rem;
 }
 
-.brand__mark {
-  width: 3.2rem;
-  inline-size: 3.2rem;
-  color: var(--gold-400);
-  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 40%));
-}
-
 .brand__name {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-family: "Alex Brush", Georgia, serif;
+  font-size: clamp(2.1rem, 5vw, 2.6rem);
   line-height: 1;
-  letter-spacing: -0.02em;
   white-space: nowrap;
   color: var(--gold-300);
   text-shadow: 0 2px 10px rgb(4 16 43 / 40%);
+  transform: translateY(8px);
 }
 
 .brand__name::first-letter {
-  font-size: 1.2em;
+  font-size: 1.35em;
   color: var(--gold-400);
 }
 
@@ -634,7 +634,7 @@ ul {
 }
 
 .site-footer {
-  padding: clamp(1.6rem, 4vw, 2.5rem) var(--pad);
+  padding: clamp(2rem, 5vw, 3.5rem) var(--pad);
   text-align: center;
   color: #cfd8ea;
   background: var(--ink);
@@ -643,16 +643,45 @@ ul {
 }
 
 .site-footer__brand {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
-  font-size: 2rem;
+  display: inline-block;
+  position: relative;
+  font-family: "Alex Brush", Georgia, serif;
+  font-size: clamp(2.1rem, 5vw, 2.6rem);
+  line-height: 1;
+  color: var(--gold-300);
+  text-shadow: 0 2px 10px rgb(4 16 43 / 40%);
+}
+
+.site-footer__brand::first-letter {
+  font-size: 1.35em;
   color: var(--gold-400);
 }
 
+.site-footer__brand::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -0.5rem;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--pink), var(--gold-500));
+}
+
 .site-footer__text {
-  margin-top: 0.4rem;
-  margin-block-start: 0.4rem;
+  max-width: 44rem;
+  margin: 1.2rem auto 0;
   font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.site-footer__text:last-child {
+  max-width: 22rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(255 255 255 / 10%);
+  color: #9fb3d9;
+  font-size: 0.8rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
