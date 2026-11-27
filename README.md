@@ -6,6 +6,11 @@
 - Browser target: Chrome/Edge, Firefox and Safari from 2021 or newer. Use only HTML, CSS and JS features available in those versions — avoid newer CSS such as `text-wrap: balance`, `:has()`, CSS nesting, container queries and `subgrid`. `aspect-ratio` has an `@supports` fallback, and the JavaScript is plain ES5 with no build step.
 - CSS uses physical properties (`width`, `margin-left`, `border-top`), not logical ones (`inline-size`, `margin-inline`, `border-block-start`), and no `inset` shorthand. Flex containers use margins instead of `gap`; grid `gap` is fine. All of these are missing from Safari 14.0 (iOS 14.0-14.4) and only arrived in 14.1.
 
+## Layout and screen sizes
+
+- All sizes are in `rem`, so the whole page scales with the root font size. On large screens the root size grows: 18 px from 1920 px wide, 24 px from 2560 px and 32 px from 3840 px (`@media (min-width: 120rem / 160rem / 240rem)` at the end of `style.css`), so the content does not look tiny on QHD and 4K monitors. From 1920 px the yellow call-to-action card is capped at `70rem`, the same width as the gallery.
+- The hero uses `min-height: calc(100svh + 1px)` after a `100vh` fallback. Browsers without `svh` (before Safari 15.4, Chrome 108, Firefox 101) ignore the second line and keep `100vh`; newer mobile browsers do not resize the hero when the address bar hides.
+
 ## Icons
 
 - Using Inline SVG icons, hand-written, simplified versions adapted from the [Lucide icon set](https://lucide.dev/icons), which is licensed under the ISC license (free for commercial use, no attribution required).
@@ -35,6 +40,11 @@
 `.github/workflows/static.yml` publishes to GitHub Pages on every push to `main`. It does not upload the whole repository, only what the page loads: `index.html`, `style.css`, `favicon.ico`, `favicon.svg`, `robots.txt`, `sitemap.xml`, `fonts/`, `img/thumbs/`, `img/og-image.jpg` and `CNAME` (if present). `img/original/` (about 4 MB of full-size photos) stays out of the published site.
 
 The workflow then checks that every file referenced from `index.html` and `style.css` is part of the published set and fails the deploy if one is missing. When the page starts using a new file or folder (a script, new images, another font), add it to the **Collect site files** step in the workflow.
+
+## SEO files
+
+- `sitemap.xml`: update `<lastmod>` to the publish date whenever the page content changes (format `YYYY-MM-DD`).
+- `robots.txt`: search engines read it only from the root of a domain, so while the site is served from `https://abelic.com/cistimo-web/` this file has no effect there. Effective rules would have to live at `https://abelic.com/robots.txt`. It starts working normally once the site moves to `cistimo.rs` (see below).
 
 ## TODO: Custom domain
 
