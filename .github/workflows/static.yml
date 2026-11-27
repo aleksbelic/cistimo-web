@@ -54,7 +54,7 @@ jobs:
           refs = set(re.findall(r'(?:src|href)="([^"#?]+)"', html))
           refs |= set(re.findall(r'url\(["\']?([^)"\']+)["\']?\)', css))
           missing = sorted(r for r in refs
-                           if not re.match(r"(https?:|//|mailto:|tel:|data:)", r)
+                           if not re.match(r"(https?:|//|mailto:|tel:|data:|#|%23)", r)
                            and not os.path.exists(os.path.join(site, r)))
           if missing:
               print("Referenced but not in _site:")
