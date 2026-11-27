@@ -185,6 +185,7 @@ ul {
   align-items: center;
   margin-top: calc(-1 * var(--header-offset) - 1px);
   min-height: calc(100vh + 1px);
+  min-height: calc(100svh + 1px);
   padding: clamp(2rem, 7vh, 4rem) var(--pad);
   text-align: center;
   color: #fff;
@@ -680,6 +681,30 @@ ul {
   border-top: 1px solid rgb(255 255 255 / 10%);
   color: #9fb3d9;
   font-size: 0.8rem;
+}
+
+@media (min-width: 120rem) {
+  html {
+    font-size: 112.5%;
+  }
+
+  .cta {
+    max-width: 70rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 160rem) {
+  html {
+    font-size: 150%;
+  }
+}
+
+@media (min-width: 240rem) {
+  html {
+    font-size: 200%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
