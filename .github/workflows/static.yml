@@ -30,9 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: Collect site files
         # Publish only what the page loads. img/original/ (full-size photos) stays out.
         # When the page starts using a new file or folder, add it here.
@@ -64,7 +64,7 @@ jobs:
           print("All " + str(len(refs)) + " referenced files are in _site")
           PY
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: '_site'
       - name: Deploy to GitHub Pages

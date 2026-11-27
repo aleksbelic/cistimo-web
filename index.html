@@ -278,12 +278,15 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     var header = document.querySelector(".site-header");
+    var lastY = 0;
     function updateHeader() {
-      if (window.pageYOffset > 0) {
+      var y = window.pageYOffset;
+      if (y > lastY) {
         header.classList.add("is-scrolled");
-      } else {
+      } else if (y < 40) {
         header.classList.remove("is-scrolled");
       }
+      lastY = y;
     }
     function updateHeaderOffset() {
       var height = header.getBoundingClientRect().height;
