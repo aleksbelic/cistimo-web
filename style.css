@@ -581,6 +581,32 @@ ul {
   margin-right: 0.35em;
 }
 
+.cta__viber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.2rem;
+  margin-top: 0.9rem;
+  padding: 0 1.5em;
+  border-radius: 999px;
+  background: #665cac;
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 6px 16px rgb(102 92 172 / 35%);
+  transition: font-size 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta__viber:hover {
+  font-size: 1.05rem;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+}
+
+.cta__viber-icon {
+  width: 1.15em;
+  height: 1.15em;
+  margin-right: 0.55em;
+}
+
 .gallery {
   display: grid;
   gap: 1rem;
@@ -598,12 +624,6 @@ ul {
   border: 3px solid var(--gold-500);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-
-.gallery__image:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgb(4 16 43 / 25%);
 }
 
 @supports not (aspect-ratio: 4 / 5) {

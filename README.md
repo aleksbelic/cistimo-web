@@ -24,6 +24,12 @@
 - Favicons are `favicon.svg` (modern browsers) and `favicon.ico` at 48×48 (fallback for older browsers such as Safari 2021). Both use the Lucide `truck` icon in the site's navy/gold palette.
 - All inline icons are simplified Lucide paths (ISC licensed).
 
+## Contact and structured data
+
+- The yellow call-to-action card has two buttons: the phone link (`tel:+381616648269`) and a Viber button (`viber://chat?number=%2B381616648269`). The Viber link has no web fallback, so it does nothing on a device without Viber. WhatsApp is intentionally not offered. Both buttons share the same hover effect (slightly larger text and a bigger shadow); the Viber button has a fixed `height` so the card does not grow on hover.
+- `index.html` contains a `LocalBusiness` JSON-LD block (name, description, url, image, telephone, area served) for search engines. The gallery images have no hover effect, so they do not look clickable.
+- The Alex Brush `.woff2` is preloaded in `<head>` to avoid a late font swap in the wordmark.
+
 ## Deploy
 
 `.github/workflows/static.yml` publishes to GitHub Pages on every push to `main`. It does not upload the whole repository, only what the page loads: `index.html`, `style.css`, `favicon.ico`, `favicon.svg`, `robots.txt`, `sitemap.xml`, `fonts/`, `img/thumbs/`, `img/og-image.jpg` and `CNAME` (if present). `img/original/` (about 4 MB of full-size photos) stays out of the published site.
@@ -47,10 +53,11 @@ The site is currently served from `https://abelic.com/cistimo-web/`. When the ne
 - After DNS propagates, enable **Enforce HTTPS** (GitHub issues a free certificate).
 - Keep *Build and deployment → Source* set to **GitHub Actions**; the workflow needs no changes.
 
-### Code changes (6 places)
+### Code changes (7 places)
 
 - `index.html`: canonical link → `https://cistimo.rs/`.
 - `index.html`: `og:url` and the `og:image` URL → `https://cistimo.rs/...`.
+- `index.html`: the `url` and `image` values in the JSON-LD block → `https://cistimo.rs/...`.
 - `sitemap.xml`: `<loc>` → `https://cistimo.rs/`.
 - `robots.txt`: `Sitemap:` → `https://cistimo.rs/sitemap.xml`.
 - `robots.txt`: remove the comment about the site being served under `/cistimo-web/` — on the new domain the site lives at the root, so `robots.txt` and `sitemap.xml` work normally.
