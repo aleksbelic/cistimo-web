@@ -60,6 +60,7 @@
 
   <main class="page__main">
     <section class="hero">
+      <div class="hero__bubbles" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="hero__content">
         <p class="hero__eyebrow">Čisto okruženje za bolji život!</p>
         <h1 class="hero__title">Čišćenje <span class="hero__title-accent">stanova, podruma, tavana, garaža i poslovnih
@@ -270,7 +271,25 @@
 
   <footer class="site-footer">
     <p class="site-footer__brand">Vule</p>
-    <p class="site-footer__text">Čišćenje stanova, kuća, podruma, tavana, garaža i poslovnih prostora, odnošenje starog nameštaja i otpada.</p>
+    <p class="site-footer__area">
+      <svg class="icon site-footer__area-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+      Beograd i okolina
+    </p>
+    <div class="site-footer__actions">
+      <a class="site-footer__action site-footer__action--phone" href="tel:+381616648269" aria-label="Pozovite 061 664 8269">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+      </a>
+      <a class="site-footer__action site-footer__action--viber" href="viber://chat?number=%2B381616648269" aria-label="Pišite nam na Viber">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+        </svg>
+      </a>
+    </div>
     <p class="site-footer__text">&copy; <span id="year">2026</span> Vule. Sva prava zadržana.</p>
   </footer>
 
